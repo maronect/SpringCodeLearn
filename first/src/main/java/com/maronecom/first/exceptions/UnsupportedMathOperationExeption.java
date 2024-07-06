@@ -9,6 +9,5 @@ public class UnsupportedMathOperationExeption extends RuntimeException {
     public UnsupportedMathOperationExeption(String ex){
         super(ex);
     }
-
     private static final long serialVersion = 1L;
 }
