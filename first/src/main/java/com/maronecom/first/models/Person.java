@@ -2,12 +2,37 @@ package com.maronecom.first.models;
 
 import java.io.Serializable;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+//mapeando a tabela person pelo hybernate
+@Entity
+@Table(name = "person")
 public class Person implements Serializable{
+
     private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//soma em 1 o Id a kd persistEncia
     private long id;
-    private String firstName;
+
+    @Column(name = "first_name", nullable = false, length = 50)//nome no banco
+    private String firstName;//   nome no obj java
+    
+    @Column(name = "last_name", nullable = false, length = 50)
     private String lastName;
+    
+    @Column(nullable = false, length = 100)
     private String gender;
+    
+    @Column(nullable = false, length = 6)
     private String address;
     
 
