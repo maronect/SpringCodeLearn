@@ -2,7 +2,7 @@ package com.maronecom.first.controllers;
 
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RestController;
-import com.maronecom.first.exceptions.UnsupportedMathOperationExeption;
+import com.maronecom.first.exceptions.ResourseNotFoundException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,7 +19,7 @@ public class MathController {
         
     ) throws Exception{
         if (!isNumeric(firstNum) || !isNumeric(secondNum) ) {
-            throw new UnsupportedMathOperationExeption("Set a number type value!");
+            throw new ResourseNotFoundException("Set a number type value!");
         }
         switch (operator) {
             case "sum":
@@ -30,13 +30,13 @@ public class MathController {
                 return convertToDouble(firstNum) * convertToDouble(secondNum); 
             case "div":
                 if (secondNum == "0") {
-                    throw new UnsupportedMathOperationExeption("Can not divide by zero!");
+                    throw new ResourseNotFoundException("Can not divide by zero!");
                 }
                 return convertToDouble(firstNum) / convertToDouble(secondNum); 
             case "ave":
                 return (convertToDouble(firstNum) + convertToDouble(secondNum))/2; 
             default:
-                throw new UnsupportedMathOperationExeption("Undefined operator!");
+                throw new ResourseNotFoundException("Undefined operator!");
         }
     }
 
@@ -45,10 +45,10 @@ public class MathController {
         @PathVariable(value = "firstNum")String firstNum
     ) throws Exception{
         if (!isNumeric(firstNum)) {
-            throw new UnsupportedMathOperationExeption("Set a number type value!");
+            throw new ResourseNotFoundException("Set a number type value!");
         }
         if (convertToDouble(firstNum) < 0) {
-            throw new UnsupportedMathOperationExeption("Only positive numbers ar allowed!");
+            throw new ResourseNotFoundException("Only positive numbers ar allowed!");
         }
         return Math.sqrt(convertToDouble(firstNum));
     }
