@@ -1,8 +1,9 @@
 package com.maronecom.first.controllers;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.maronecom.first.data.vo.v1.PersonVO;
 import com.maronecom.first.models.Person;
 import com.maronecom.first.services.PersonServices;
 
@@ -20,30 +21,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 @RequestMapping("/person")
 public class PersonController {
-    private final AtomicLong cont = new AtomicLong();
-
     @Autowired
     private PersonServices service = new PersonServices();
 
     @GetMapping(produces = MediaType.
     APPLICATION_JSON_VALUE)//precisa para o Swagguer documentar corretamente
-    public List<Person> findAll(){
+    public List<PersonVO> findAll(){
         return service.findAll();
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person findById(@PathVariable(value = "id")Long id){
+    public PersonVO findById(@PathVariable(value = "id")Long id){
         return service.findById(id);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person create(@RequestBody Person person){
-        return service.create(person);
+    public PersonVO create(@RequestBody PersonVO personVO){
+        return service.create(personVO);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person update(@RequestBody Person person){
-        return service.update(person);
+    public PersonVO update(@RequestBody PersonVO personVO){
+        return service.update(personVO);
     }
 
     @DeleteMapping(value = "/{id}")
