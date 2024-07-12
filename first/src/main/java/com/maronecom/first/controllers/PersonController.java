@@ -2,12 +2,9 @@ package com.maronecom.first.controllers;
 
 import java.util.List;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.maronecom.first.data.vo.v1.PersonVO;
 import com.maronecom.first.data.vo.v2.PersonVOV2;
-import com.maronecom.first.models.Person;
 import com.maronecom.first.services.PersonServices;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

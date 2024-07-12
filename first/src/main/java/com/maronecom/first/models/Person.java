@@ -1,12 +1,6 @@
 package com.maronecom.first.models;
 
 import java.io.Serializable;
-
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,13 +1,25 @@
 package com.maronecom.first.data.vo.v1;
 
+//import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.io.Serializable;
+
+@JsonPropertyOrder({"id", "firstName", "lastName", "gender", "address"})
 public class PersonVO implements Serializable{
 
     private static final long serialVersionUID = 1L;
     private long id;
+
+    @JsonProperty("first_name")
     private String firstName;
+
+    @JsonProperty("last_name")
     private String lastName;
+
+    //@JsonIgnore
     private String gender;
+
     private String address;
 
     public PersonVO(){     
